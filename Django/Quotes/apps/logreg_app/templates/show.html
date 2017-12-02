@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User</title>
+</head>
+<body>
+    <h1>Posts by {{user.first_name}} </h1>
+    <p>Count:{{user.favorites.all | length}}</p>
+    
+    {% for favorite in favorites %}
+    <div>
+        <span style="color: red">{{favorite.author}}:</span>
+        {{favorite.content}}
+    </div>
+    {% endfor %}
+    <button><a href="/success">Home Page</a></button>
+    <div class="logout">
+        <form action="/logout" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="logout">
+        </form>
+    </div>
+</body>
+</html>

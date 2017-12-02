@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+</head>
+<body>
+    <h1>Success! Welcome, {{ current_user.first_name }}</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p> {{ message }}</p>
+        {% endfor %} 
+    {% endif %}
+    <button><a>Go to My Profile</a></button>
+    <div class="logout">
+       <form action="logout" method="post">
+             {% csrf_token %}
+             <input type="submit" name="logout" value="logout">
+       </form>
+    </div>
+    <!-- {% if messages %} {% for message in messages %}
+        <p {% if messages.tags %} {% endif %}> {{ message }}</p>
+        {% endfor %} 
+    {% endif %}
+    <h1>Success! Welcome {{ users.first_name }}</h1>
+    <p><strong>First Name:</strong> {{ users.first_name }}</p><br>
+    <p><strong>Last Name:</strong> {{ users.last_name }}</p><br>
+    <p><strong>Email:</strong> {{ users.email }}</p><br>
+    <p><strong>Created at:</strong> {{ users.created_at }}</p><br> -->
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="profile">
+        <h1>This is your profile {{ current_user.first_name }}... </h1>
+        <p><strong>Name:</strong> {{ current_user.first_name }} {{ current_user.last_name }}</p>
+        <p><strong>Email:</strong> {{ current_user.email }}</p>
+    </div>
+    <button>
+        <a href="/success"> Home </a>
+    </button>
+    <div class="logout">
+        <form action="/logout" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="logout">
+        </form>
+    </div>
+</body>
+</html>

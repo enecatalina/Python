@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Pick Your Favorite Ninja</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="ninja.js"></script>
+        <script type="text/javascript"></script>
+    </head>
+    <body>
+    <div class="content">
+        <h1>You Found The Ninja Turles!</h1>
+        <h3>What color ninja do you want?</h3>
+        <form>
+            <input type="radio" name="red" value="red" checked> Red<br>
+            <input type="radio" name="blue" value="blue"> Blue<br>
+            <input type="radio" name="orange" value="orange"> Orange<br>
+            <input type="radio" name="purple" value="purple"> Purple<br>
+            <input type="radio" name="april" value="april"> April<br><br>
+            <input type="button" onclick="location.href='/selected_ninja';" value="Meet your ninja friend" />
+        </form>
+        <img src="{{ url_for('static', filename='img/tmnt.png')}}">
+    </div>
+    </body>
+</html>

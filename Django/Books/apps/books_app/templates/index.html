@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="user_home">
+        <h1>Welcome, {{ current_user.first_name }}</h1>
+        <h2>Your Book Shelf</h2>
+        <table>
+            <tr>
+                <th>Book</th>
+                <th>Author</th>
+                <th>Rating</th>
+                <th>Actions</th>
+            </tr>
+            {% for book in user_books %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td>Actions
+                    <a href="/user/{{ user.id }}">Show</a>
+                    <a href="/user/{{ user.id }}/edit">Edit</a>
+                    <a href="/user/{{ user.id }}">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+    <style>
+        .body{
+            display: inline-block;
+            width: 1000px;
+        }
+        .create_quote,{
+            border: 2px solid grey;
+    
+        }
+        .favorite_quotes{
+            border: 2px solid grey;
+        }
+        .quotable_quotes{
+            border: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome To Your Profile {{ current_user.first_name }}</h1>
+    {% if messages %} 
+        {% for message in messages %}
+            <p> {{ message }}</p>
+        {% endfor %} 
+    {% endif %}
+    <div class ="body">
+        <div class="create_quote">
+    <!-- Create a quote -->
+            <h1>Contribute A Quote:</h1>
+            <form action="create_quote" method="POST">
+            {% csrf_token %}
+            <strong>Quated by</strong>
+                <input type="text" name="author"><br>
+            <strong>Message:</strong><br>
+                <textarea name="content"></textarea><br>
+            <input type="submit" value="Submit">
+            </form>
+        </div>
+    <!-- Look at quotes -->
+        <div class="quotable_quotes">
+            <h1>Quatable Quotes</h1>
+            {% for quote in quotable_quotes %}
+                <p>{{quote.author}}:{{quote.content}}</p>
+            <p>posted by:<a href="/user/{{ quote.poster.id }}">{{quote.poster.first_name}}</a></p>
+            <a href="user/add/{{ quote.id }}">Add to My List</a>
+            {% endfor %}
+        </div>
+    <!-- Favorite quotes -->
+        <div class="favorite_quotes">
+            <h1>Your Favorite Quotes:</h1>
+            {% for favorite in favorites %}
+            <p>{{favorite.author}}:{{favorite.content}}</p>
+            <p>posted by:<a href="/user/{{ favorite.poster.id }}">{{favorite.poster.first_name}}</a></p>
+            <a href="user/remove/{{ favorite.id }}">Remove from My List</a>
+            {% endfor %}
+        </div>
+        <div class="logout">
+        <form action="/logout" method="post">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

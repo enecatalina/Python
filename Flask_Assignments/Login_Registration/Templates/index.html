@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login And/Or Register</title>
+    <style>
+        .h1{
+            margin-left: 20px;
+        }
+        .form{
+            margin-left: 20px;
+            margin-top: 20px;
+            border: 20px solid grey;
+            width: 350px;
+            height: 350px;
+            text-align: center;
+            background-color: rgb(16, 100, 148);
+        }
+        input{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register Here!</h1>
+     {% with messages = get_flashed_messages()%} 
+        {%if messages%} 
+            {%for message in messages%}
+                <p>{{message}}</p>
+            {% endfor %} 
+        {% endif %} 
+    {% endwith %}
+    <div class="form">
+        <form action="/register" method='post'>
+            First Name:<br><input type="text" name="first_name"><br>
+            Last Name:<br><input type="text" name="last_name"><br>
+            Email:<br><input type="email" name="email"><br>
+            Password:<br><input type="text" name="password"><br>
+            Confirm Password<br><input type="text" name="password_confirm"><br>
+            <input type="submit" name="Register"><br>
+        </form>
+    </div>
+    <h1>Login Here!</h1>
+    <div class="form">
+        <form action="/login" method='post'>
+            Email:<br><input type="text" name="email"><br> 
+            Password:<br><input type="text" name="password"><br> 
+            <input type="submit" name="Register"><br>
+        </form>
+    </div>
+</body>
+</html>

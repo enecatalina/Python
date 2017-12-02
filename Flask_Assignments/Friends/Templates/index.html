@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> My Friends</title>
+    <style>
+        body{
+            width: 1000px;
+            height: 800px;
+            border: 3px solid grey;
+        }
+        .current_friends{
+            text-align: center;
+            border: 2px dashed grey;
+            background-color: rgba(255, 192, 204, 0.63);
+            color: white;
+            margin: 50px;
+
+        }
+        .add_friends{
+            text-align: center;
+        }
+        table th{
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <div class="current_friends">
+        <h2>These are all my friends!</h2>
+        <table>
+            {% for makefriends in friends%}
+            <tr>
+                <th>First Name:</th>
+                    <td>{{ makefriends.first_name }}</td>
+                <th>Last Name:</th>
+                    <td>{{ makefriends.last_name }}</td>
+                <th>Occupation:</th>
+                    <td>{{ makefriends.occupation }}</td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div class"add_friends">
+        <h1>Let's Make More Friends</h1>
+        <h2>Create A Form To Start Making Friends</h2>
+        <form action='/create_friends' method='POST'>
+            First Name: <input type="text" name="first_name">
+            Last Name:<input type="text" name="last_name" >
+            Occupation:<input type="text" name="occupation">            
+            <input type="submit" value="submit">
+        </form> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Counter</title>
+    </head>
+    <body>
+        <h1>COUNTER</h1>
+        <p>You visited this page {{session['counter']}} times</p> 
+        <form action="/by_two" methods="post">
+            <button>Count by 2</button>
+        </form>
+        <form action='/reset' methods='post'>
+            <button>Reset Counter</button>
+        </form>
+    </body>
+</html>

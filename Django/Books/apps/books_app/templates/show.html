@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Show Books</title>
+</head>
+<body>
+    <div>
+        <button>
+            <a href="">Home</a>
+        </button>
+        <form action="logout" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="logout">
+        </form>
+    <div class"show_book">
+        <h1>{{ book.title }}</h1>
+        <h2>{{ book.author }}</h2>
+        <div class="review">
+            <span>Review:</span>
+            <!-- { for review in book.book_reviews.all() } -->
+                <span>Rating: {{ review.ratings }} </span>
+                <p>Posted on: {{ review.created_at }}</p>
+            <!-- {% endfor %} -->
+        </div>
+        <div class="give_review">
+            <form action="">
+                 {% csrf_token %}
+                 <span>Review:</span>
+                 <textarea name="review" cols="30" rows="10"></textarea>
+                <strong>Rating</strong>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select><br>
+                <input type="submit" name="submut" value="Submit Review">
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

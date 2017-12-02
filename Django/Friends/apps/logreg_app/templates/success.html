@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+    <style>
+        .user_form th {
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome To Your Profile {{ current_user.first_name }}</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p> {{ message }}</p>
+        {% endfor %} 
+    {% endif %}
+    <div class="users_friends">
+        {% if friends %}
+            <h3>Here is the list of your friends:</h3>
+        {% else %}
+            <h3>You don't have friends yet:</h3>
+        {% endif %}
+        <table>
+            <tr>
+                <th>Friends</th>
+                <th>Actions</th>
+            </tr>
+            {% for friends in friends %}
+            <tr>
+                <td>{{ friends.first_name }}</td>
+                <td>
+                    <button><a href="/user/{{ friends.id }}">View Profile</a></button>
+                     <!-- "/user/{{ current_user.id }}" -->
+                    <button><a href='/user/remove/{{ friends.id }}'>Remove as a Friend</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <tr>
+                <th>Be Friends With:</th>
+                <th>Actions</th>
+            </tr>
+                {% for users in users %}
+                <td>
+                    <a href='/user/{{users.id}}'>{{users.first_name}} {{users.last_name}}</a>
+                </td>
+                <td>
+                    <form action='/user/add/{{users.id}}' method='POST'>
+                        {% csrf_token %}
+                        <input id='add' type='submit' value='Add as Friend'>
+                    </form>
+                </td>
+            </tr>
+                {% endfor %}
+        </table>
+       
+    </div>
+    <div class="logout">
+        <form action="logout" method="post">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="logout">
+        </form>
+    </div>
+</body>
+</html>
